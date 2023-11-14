@@ -1,0 +1,55 @@
+version: '3.9'
+services:
+  server:
+      container_name: songmoana-image-search-server
+      image: songmoana-image-search-server
+      build:
+        context: ./
+        dockerfile: Dockerfile
+      stdin_open: true
+      tty: true
+      ipc: host
+      ports:
+        - "${SERVER_PORT}:3001"
+      env_file: ./.env
+      volumes:
+        - .:/songmoana
+      environment:
+        TZ: "Asia/Seoul"
+      restart: always
+      networks:
+        - es
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.4
+    container_name: elasticsearch
+    volumes:
+      - ./app/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
+      - ./app/elasticsearch:/usr/share/elasticsearch/data:Z
+    ports:
+      - ${ELASTIC_PORT}:9200
+      - 9300:9300
+    environment:
+      TZ: Asia/Seoul
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD}
+    env_file: ./.env
+    healthcheck:
+      test: 
+        [
+        "CMD-SHELL", 
+        "curl -u elastic:${ELASTIC_PASSWORD} --silent --fail localhost:9200/_cat/health || exit 1"
+        ]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    restart: always
+    networks:
+      - es
+      
+volumes:
+  setup:
+  elasticsearch:
+
+networks:
+  es:

@@ -1,0 +1,15 @@
+cluster.name: songmoana-cluster
+node.name: songmoana-single
+
+path.data: /usr/share/elasticsearch/data
+path.logs: /usr/share/elasticsearch/logs
+path.repo: /usr/share/elasticsearch/backup
+
+discovery.type: single-node
+discovery.seed_hosts: songmoana-single
+
+network.host: 0.0.0.0
+transport.port: 9300 
+
+xpack.license.self_generated.type: basic
+xpack.security.enabled: true
