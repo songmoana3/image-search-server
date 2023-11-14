@@ -1,5 +1,5 @@
 from app.image_utils.hashing import LSHHash
-from app.image_utils.feature_extractor import FeatureExtractor
+from app.image_utils.feature_extractor_sift import FeatureExtractor
 
 from app.server.infrastructure.elasticsearch.es_build_query import build_query
 from app.server.infrastructure.elasticsearch.es_connect import connect_es_server

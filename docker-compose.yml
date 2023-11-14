@@ -5,7 +5,7 @@ services:
       image: songmoana-image-search-server
       build:
         context: ./
-        dockerfile: Dockerfile
+        dockerfile: ${FEATURE_VER}
       stdin_open: true
       tty: true
       ipc: host
