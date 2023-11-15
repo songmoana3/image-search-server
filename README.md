@@ -1,11 +1,11 @@
 # songmoana-image-search project
 > Developer : songmoana  
-> Last modified : 23.11.08  
+> Last modified : 23.11.15  
 > Contact : songmoana3@gmail.com
 
 ## _Update Note_  
 - 23-11-08 : Release
-    
+- 23-11-15 : Add sift version    
 
 ## _Files required for execution_
 -  `.env`
