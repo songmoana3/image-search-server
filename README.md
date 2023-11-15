@@ -71,6 +71,11 @@
 ## _How to execute_
 * Docker  
     1. docker-compose up 으로 실행 
+
+* .env 파일 (image feaure 추출하는 방식에 따라 결정)
+    1. pytorch 사용 시 - FEATURE_VER=Dockerfile
+    2. opencv 사용 시 - FEATURE_VER=Dockerfile.sift
+
 ---
 
 * Scrapy 
